@@ -5,7 +5,7 @@ A Raycast extension that improves text using Claude AI.
 ## Features
 
 - Reads text from your clipboard
-- Sends it to Claude (claude-sonnet-4-20250514) to make it clearer and more professional
+- Sends it to Claude to make it clearer and more professional
 - Automatically copies the improved text back to clipboard
 - Attempts to paste the improved text directly (works in Slack and other apps)
 
