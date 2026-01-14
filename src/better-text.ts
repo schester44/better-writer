@@ -3,9 +3,11 @@ import Anthropic from "@anthropic-ai/sdk";
 
 interface Preferences {
   apiKey: string;
+  systemPrompt: string;
 }
 
-const SYSTEM_PROMPT = `You are a writing assistant. Improve the given text to be clearer, more concise, and more professional while preserving the original meaning and tone. Output only the improved text with no explanations, preamble, or quotes.`;
+const DEFAULT_SYSTEM_PROMPT =
+  "You are a writing assistant. Rewrite the given text to improve clarity, flow, and correctness while preserving the original meaning and tone. Be concise and natural. Output only the revised text, with no explanations, preamble, or quotes.";
 
 export default async function Command() {
   const preferences = getPreferenceValues<Preferences>();
@@ -37,11 +39,11 @@ export default async function Command() {
     const message = await client.messages.create({
       model: "claude-sonnet-4-5",
       max_tokens: 4096,
-      system: SYSTEM_PROMPT,
+      system: preferences.systemPrompt || DEFAULT_SYSTEM_PROMPT,
       messages: [
         {
           role: "user",
-          content: selectedText,
+          content: `user text: ${selectedText}`,
         },
       ],
     });

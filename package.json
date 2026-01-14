@@ -25,6 +25,14 @@
       "description": "Your Anthropic API key",
       "type": "password",
       "required": true
+    },
+    {
+      "name": "systemPrompt",
+      "title": "System Prompt",
+      "description": "The system prompt used to instruct Claude on how to improve text",
+      "type": "textfield",
+      "default": "You are a writing assistant. Rewrite the given text to improve clarity, flow, and correctness while preserving the original meaning and tone. Be concise and natural. Output only the revised text, with no explanations, preamble, or quotes.",
+      "required": false
     }
   ],
   "dependencies": {
